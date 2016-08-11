@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  datetime: 2016-08-11 11:58:24
+  origin: MyString
+  destination: MyString
+  shipment_value: 9.99
+
+two:
+  datetime: 2016-08-11 11:58:24
+  origin: MyString
+  destination: MyString
+  shipment_value: 9.99
