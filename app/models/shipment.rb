@@ -14,6 +14,10 @@ class Shipment < ActiveRecord::Base
 			else 
 				Shipment.create!(shipment_hash)
 			end
+			
+		end
+		def price
+   			@price = "$%.2f" % self[:shipment_value]
 		end
 	end
 end
