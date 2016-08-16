@@ -1,6 +1,8 @@
 class ShipmentsController < ApplicationController
   def index
   	@shipments = Shipment.order(params[:sort])
+  	
+
   end
 
   def import
