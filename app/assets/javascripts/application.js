@@ -6,7 +6,7 @@ $(document).ready(function () {
 	var origins = [];
 	$('tbody tr').each(function() {	
     origins.push($(this).find(".origin").html()); 
-      
+
  	});
 
  	//create an array of desinations
@@ -47,68 +47,52 @@ $(document).ready(function () {
   });
 
 
- //  function sortByFrequency(array) {
- //    var frequency = {};
-
- //    array.forEach(function(value) { frequency[value] = 0; });
- //    var uniques = array.filter(function(value) {
- //        return ++frequency[value] == 1;
- //    });
- //    //return frequency;
- //    return uniques.sort(function(a, b) {
- //        return frequency[b] - frequency[a];
-
- //    });
-	// }
-
-	function sortByFrequency (array) {
-    var cities = [], frequencies = [], prev;
-
-    array.sort();
-    for ( var i = 0; i < array.length; i++ ) {
-      if ( array[i] !== prev ) {
-        cities.push(array[i]);
-          frequencies.push(1);
-      } else {
-        frequencies[frequencies.length-1]++;
-      }
-      prev = array[i];
-    }
+  function sortByFrequency(array) {
+    var frequency = {};
+    array.forEach(function(value) { frequency[value] = 0; });
+    var uniques = array.filter(function(value) {
+        return ++frequency[value] == 1;
+    });
+    //return frequency;
+    console.log(frequency);
+    delete frequency.undefined;
+    return frequency;
     
-    return [cities, frequencies];
 	}
+
+	// function sortByFrequency (array) {
+ //    var cities = [], frequencies = [], prev;
+    
+ //    array.sort();
+
+ //    for ( var i = 0; i < array.length; i++ ) {
+ //      if ( array[i] !== prev ) {
+ //        cities.push(array[i]);
+ //          frequencies.push(1);
+ //      } else {
+ //        frequencies[frequencies.length-1]++;
+ //      }
+ //      prev = array[i];
+ //    }
+ //    console.log([cities, frequencies]);
+ //    return [cities, frequencies];
+	// }
 	
 	$('#originModalBtn').click(function () {
-		// $('#originModal').modal('show');
-		var data = sortByFrequency(origins);
+		var data = {};
+		data = sortByFrequency(origins);
 		console.log(data);
 		createTable(data, '#originTableBody');
 	});
 
-	
-	// sortByFrequency(destinations);
-	// console.log(sortByFrequency(origins));
-
-	$("#filterOrigin").change(function () {
-		if ($(this).val() == "#busyOrigin") {
-			$('#originModal').modal('show');
-			var originList = sortByFrequency(origins);
-			console.log(originList);
-			var table = createTable(originList);
-			console.log(table);
-
-		}
-	});
 
 	function createTable(data, id) {
      var tr;
-     for (var i = 0; i < data[0].length-1; i++) {
-        tr = $('<tr/>');
-        tr.append("<td>" + data[0][i] + "</td>" + "<td>" + data[1][i] + "</td>" );
+     $.each(data, function(k, v) {
+     		tr = $('<tr/>');
+        tr.append("<td>" + k + "</td>" + "<td>" + v + "</td>" );
         $(id).append(tr);
-      }
+      });
   }
-	
-
 
 });
