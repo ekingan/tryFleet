@@ -46,7 +46,7 @@ $(document).ready(function () {
 
   });
 
-
+//sorts locations by frequency, returns object of cities and frequency of each occurrance
   function sortByFrequency(array) {
     var frequency = {};
     array.forEach(function(value) { frequency[value] = 0; });
@@ -54,38 +54,26 @@ $(document).ready(function () {
         return ++frequency[value] == 1;
     });
     //return frequency;
-    console.log(frequency);
     delete frequency.undefined;
     return frequency;
     
 	}
 
-	// function sortByFrequency (array) {
- //    var cities = [], frequencies = [], prev;
-    
- //    array.sort();
-
- //    for ( var i = 0; i < array.length; i++ ) {
- //      if ( array[i] !== prev ) {
- //        cities.push(array[i]);
- //          frequencies.push(1);
- //      } else {
- //        frequencies[frequencies.length-1]++;
- //      }
- //      prev = array[i];
- //    }
- //    console.log([cities, frequencies]);
- //    return [cities, frequencies];
-	// }
-	
+//show modal containing most popular origins
 	$('#originModalBtn').click(function () {
 		var data = {};
 		data = sortByFrequency(origins);
-		console.log(data);
 		createTable(data, '#originTableBody');
 	});
 
+	//show modal containing most popular destinations
+	$('#destinationModalBtn').click(function () {
+		var data = {};
+		data = sortByFrequency(destinations);
+		createTable(data, '#destinationTableBody');
+	});
 
+//creates table out of object of cities and their frequencies
 	function createTable(data, id) {
      var tr;
      $.each(data, function(k, v) {

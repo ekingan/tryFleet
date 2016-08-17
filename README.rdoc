@@ -1,27 +1,14 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is my code challenge for Fleet. I created a RoR app that allows you up upload a CSV to a SQLlite database.
+It then displays the data in a sortable table. You can click on rows of the table to select shipments and 
+the total value of the shipment is displayed at the bottom of the table. There is a button for both the Origin
+and Destination columns which launches a modal containing the most popular locations and the number of shipments
+for each location.
 
-Things you may want to cover:
+* Rails version 4.2.5
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Database SQLite3
 
 
 Please feel free to use a different markup language if you do not plan to run
