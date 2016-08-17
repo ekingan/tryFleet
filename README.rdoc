@@ -12,8 +12,9 @@ for each location.
 
 * Database SQLite3
 
-### Start by cloning the git repo, bundle install, rake:db create, rake:db migrate, rails s
- 
+
+Start by cloning the git repo, bundle install, rake:db create, rake:db migrate, rails s
+
 
 
 
